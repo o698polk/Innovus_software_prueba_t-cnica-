@@ -1,4 +1,4 @@
-Proyecto: Prueba Técnica de Autenticación y CRUD
+<h1>Proyecto: Prueba Técnica de Autenticación y CRUD</h1>
 Este proyecto es una prueba técnica que abarca la implementación de un sistema de autenticación de usuario utilizando tokens JWT, un CRUD (a elección del participante), un diseño responsivo usando un framework CSS, y una separación clara entre el backend y el frontend. El backend se desarrollará en PHP puro y la base de datos será MySQL.
 
 Descripción General

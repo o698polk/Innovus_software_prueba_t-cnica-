@@ -37,9 +37,9 @@ class Product {
      try {
          $data = dbcx::cx(1)->prepare('SELECT * FROM productos');
          $data->execute();
-         $users = $data->fetchAll(PDO::FETCH_ASSOC);
+         $product= $data->fetchAll(PDO::FETCH_ASSOC);
          dbcx::cx(0);
-         return $users ;
+         return $product;
        
      } catch (PDOException $c) {
  
@@ -56,9 +56,9 @@ class Product {
           $data = dbcx::cx(1)->prepare('SELECT * FROM productos where id=:id');
           $data->bindParam("id",$id, PDO::PARAM_STR);
           $data->execute();
-          $user=$data->fetch();
+          $product = $data->fetchAll(PDO::FETCH_ASSOC);
           dbcx::cx(0);
-          return $user ;
+          return  $product ;
         
       } catch (PDOException $c) {
   
@@ -99,7 +99,7 @@ class Product {
            $data = dbcx::cx(1)->prepare('DELETE FROM  productos  WHERE id=:id');
            $data->bindParam("id",$id, PDO::PARAM_STR);
            $data->execute();
-           $user=$data->fetch();
+           $verif=$data->RowCount();
            dbcx::cx(0);
            return $verif ;
          

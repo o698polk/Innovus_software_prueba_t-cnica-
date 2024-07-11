@@ -38,6 +38,54 @@
   </fieldset>
 </form>
 </div>
+
+<div class="container">
+
+<!-- Modal -->
+
+<div class="modal" id="editModal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Editar Producto</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+         X
+        </button>
+      </div>
+      <div class="modal-body">
+   
+      <form id="editForm_produt">
+          <div class="form-group">
+            <label for="editId">ID:</label>
+            <input type="text" class="form-control" id="editId" name="id" readonly>
+          </div>
+          <div class="form-group">
+            <label for="editNombre">Nombre:</label>
+            <input type="text" class="form-control" id="editNombre" name="edit_nombre">
+          </div>
+          <div class="form-group">
+            <label for="editPrecio">Precio:</label>
+            <input type="text" class="form-control" id="editPrecio" name="precio">
+          </div>
+          <div class="form-group">
+            <label for="editStock">Stock:</label>
+            <input type="text" class="form-control" id="editStock" name="stock">
+          </div>
+          <div class="form-group">
+            <label for="editStock">Descripcion:</label>
+            <input type="text" class="form-control" id="editDescripcion" name="descripcion">
+          </div>
+          <button type="submit" class="btn btn-primary">Editar</button>
+       </form>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+
 <div class="container">
 <div id="tabla_productos"> 
 

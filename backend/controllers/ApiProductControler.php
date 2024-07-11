@@ -115,7 +115,7 @@ class ApiProductControler {
  }
 
  //POST UPDATE  CONTROLLER ******USUARIOS*******
- public static function updateProductApi($nombre,$precio,$stock,$descripcion,$token)
+ public static function updateProductApi($id,$nombre,$precio,$stock,$descripcion,$token)
  {
    try {
     ApiProductControler::Validation($token);
@@ -125,7 +125,7 @@ class ApiProductControler {
         $stock=ApiProductControler::limpiarDatos($stock);
         $descripcion=ApiProductControler::limpiarDatos($descripcion);
       
-        $resul=Product::createProduct($nombre,$precio,$stock,$descripcion);
+        $resul=Product::updateProduct($id,$nombre,$precio,$stock,$descripcion);
 
         if( $resul>=1){
             $respose['msg']="Producto creado ";

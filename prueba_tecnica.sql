@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 11-07-2024 a las 05:15:35
+-- Tiempo de generación: 11-07-2024 a las 15:38:35
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.1.17
 
@@ -42,10 +42,10 @@ CREATE TABLE `productos` (
 --
 
 INSERT INTO `productos` (`id`, `nombre`, `precio`, `descripcion`, `stock`, `datecreate`, `dateupdate`) VALUES
-(1, 'Zapatos', 23.00, 'Marca de zapatos venus ', 23, '2024-07-11 02:30:38', '2024-07-11 02:30:38'),
-(2, 'Gorra 23', 34.00, 'nuevo modelo de gorra', 3, '2024-07-11 02:30:38', '2024-07-11 02:30:38'),
-(3, 'Camisa', 23.00, '3', 0, '2024-07-11 03:09:39', '2024-07-11 03:09:39'),
-(4, 'Camisa4', 23.00, '3', 0, '2024-07-11 03:11:38', '2024-07-11 03:11:38');
+(9, 'Camisa1', 10.00, '5', 0, '2024-07-11 13:17:39', '2024-07-11 13:17:39'),
+(10, 'Camisa 2', 4.00, '8', 0, '2024-07-11 13:18:19', '2024-07-11 13:18:19'),
+(11, 'Camisa 3', 1.00, '2', 0, '2024-07-11 13:20:45', '2024-07-11 13:20:45'),
+(25, 'Pantalón', 34.00, '2', 0, '2024-07-11 13:38:16', '2024-07-11 13:38:16');
 
 -- --------------------------------------------------------
 
@@ -95,7 +95,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `productos`
 --
 ALTER TABLE `productos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`

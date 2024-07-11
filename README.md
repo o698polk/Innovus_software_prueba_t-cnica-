@@ -9,24 +9,5 @@ CRUD Entidad: La entidad del CRUD puede ser a elección del participante (por ej
 Diseño del Aplicativo Framework CSS: El diseño de la interfaz de usuario se llevará a cabo utilizando un framework CSS como Bootstrap, Materialize o Tailwind. Responsivo: La interfaz debe ser responsiva y amigable para el usuario.
 Backend PHP Puro: El backend debe ser desarrollado en PHP puro, sin el uso de frameworks como Laravel o Symfony. API REST: Desarrollo de una API en el backend para las operaciones CRUD, protegidas por autenticación JWT. Separación: El backend no debe mezclarse con el frontend. Deben estar en directorios separados.
 Base de Datos MySQL: Utilización de MySQL (o MariaDB) como sistema de gestión de bases de datos. Estructura: La estructura de la base de datos (número de tablas y su diseño) es a decisión del participante
-/project-root
-│
-├── /backend
-│   ├── config/
-│   ├── controllers/
-│   ├── models/
-│   ├── routes/
-│   ├── index.php
-│   ├── .env
-│   └── composer.json
-│
-├── /frontend
-│   ├── css/
-│   ├── js/
-│   ├── views/
-│   ├── index.html
-│   └── login.html
-│
-├── README.md
-└── database.sql
+
 

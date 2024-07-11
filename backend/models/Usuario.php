@@ -62,7 +62,7 @@ class Usuario {
           $data = dbcx::cx(1)->prepare('SELECT * FROM usuarios where id=:id');
           $data->bindParam("id",$id, PDO::PARAM_STR);
           $data->execute();
-          $user=$data->fetch();
+          $user = $data->fetchAll(PDO::FETCH_ASSOC);
           dbcx::cx(0);
           return $user ;
         
@@ -114,7 +114,7 @@ class Usuario {
            $data = dbcx::cx(1)->prepare('DELETE FROM  usuarios  WHERE id=:id');
            $data->bindParam("id",$id, PDO::PARAM_STR);
            $data->execute();
-           $user=$data->fetch();
+           $verif=$data->RowCount();
            dbcx::cx(0);
           
 

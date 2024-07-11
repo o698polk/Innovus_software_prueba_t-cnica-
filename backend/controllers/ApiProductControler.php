@@ -71,7 +71,7 @@ class ApiProductControler {
     ApiUserControler::Validation($token);
     $respose=array("msg"=>"Error al crear","status"=>"","data"=>"");
    
-            $resul=Usuario::getUserAll();
+            $resul=Product::getProductAll();
             if( !empty($resul)){
                 $respose['msg']="Registros encontrados ";
                 $respose['status']="200";
@@ -96,7 +96,7 @@ class ApiProductControler {
    try {
     ApiUserControler::Validation($token);
     $respose=array("msg"=>"Error al crear","status"=>"","data"=>"");
-            $resul=Usuario::getUser($id);
+            $resul=Product::getProduct($id);
             if( !empty($resul)){
                 $respose['msg']="Registros encontrados ";
                 $respose['status']="200";
@@ -151,7 +151,7 @@ class ApiProductControler {
     ApiUserControler::Validation($token);
     $respose=array("msg"=>"Error al crear","status"=>"","data"=>"");
    
-            $resul=Usuario::deleteUser($id);
+            $resul=Product::deleteProduct($id);
             if( !empty($resul)){
                 $respose['msg']="Eliminado ";
                 $respose['status']="200";

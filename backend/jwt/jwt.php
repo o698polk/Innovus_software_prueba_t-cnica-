@@ -3,24 +3,31 @@
 require_once  '../../vendor/autoload.php';
 
 use Firebase\JWT\JWT;
-
+use Firebase\JWT\Key;
 
 function generateJWT($userId) {
-    $key = "polk_vernaza";  // Cambia "your_secret_key" por tu clave secreta real
-    $payload = array(
-        "iat" => time(),
-        "exp" => time() + (60*60), // Token válido por 1 hora
-        "userId" => $userId
-    );
+    $payload = [
+        'iss' => 'http://example.org',
+        'aud' => 'http://example.com',
+        'iat' => time(),
+        'nbf' => time() + 10,
+        'data' => [
+            'userId' => $userId,
+        ]
+    ];
 
-    return JWT::encode($payload, $key, 'HS256');  // Asegúrate de incluir el algoritmo correcto (HS256 en este caso)
+    $secretKey = 'polk';
+    return JWT::encode($payload, $secretKey, 'HS256');
+
 }
 
-function validateJWT($jwt) {
-    $key = "polk_vernaza";  // Cambia "your_secret_key" por tu clave secreta real
+function validateJWT($jwt)
+{
+    $secretKey = 'polk';
+
     try {
-        $decoded = JWT::decode($jwt, $key, array('HS256'));
-        return (array) $decoded;
+        $decoded = JWT::decode($jwt, new Key($secretKey, 'HS256'));
+        return (array) $decoded->data;
     } catch (Exception $e) {
         return false;
     }

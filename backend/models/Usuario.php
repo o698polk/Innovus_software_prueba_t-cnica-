@@ -1,14 +1,22 @@
-// backend/models/Usuario.php
+
 <?php
 include('../config/config.php');
-
 class Usuario {
    
-  // CREATE ******USUARIOS*******
+  public static function encriptarDato($dato)
+  {
+    // Generar el hash de la contraseña
+
+    $textoEncriptado = hash('sha256', $dato);
+    return $textoEncriptado;
+  }
+  //POST CREATE MODELS ******USUARIOS*******
   public static function createUser($email,$pass,$rol,$username)
   {
 
     try {
+
+        $pass = Usuario::encriptarDato($pass);
         $data = dbcx::cx(1)->prepare('INSERT INTO usuarios(email,passwords,rol,username)values(:emailuser,:passuser,:rol,:username)');
         $data->bindParam("email", $email, PDO::PARAM_STR);
         $data->bindParam("passwords", $pass, PDO::PARAM_STR);
@@ -28,16 +36,16 @@ class Usuario {
 
 
 
-   // GET ALL ******USUARIOS*******
+   // GET ALL MODELS******USUARIOS*******
 
    public static function getUserAll()
    {
      try {
          $data = dbcx::cx(1)->prepare('SELECT * FROM usuarios');
          $data->execute();
-         $user=$data->fetch();
+         $users = $data->fetchAll(PDO::FETCH_ASSOC);
          dbcx::cx(0);
-         return $user ;
+         return $users ;
        
      } catch (PDOException $c) {
  
@@ -46,7 +54,7 @@ class Usuario {
    }
 
 
-    // GET ID ******USUARIOS*******
+    // GET ID  MODELS******USUARIOS*******
 
     public static function getUser($id)
     {
@@ -64,26 +72,80 @@ class Usuario {
       }
     }
 
-    // GET ID ******USUARIOS*******
+    // POST UPDATE MODELS ******USUARIOS*******
 
     public static function updateUser($id,$email,$pass,$rol,$username)
     {
       try {
-          $data = dbcx::cx(1)->prepare('UPDATE  channelltm  SET email=:email,passwords=:passwords,rol=:rol,username=:username where id=:id');
+
+        $bar = dbcx::cx(1)->prepare('SELECT * FROM usuarios WHERE  id=:id');
+        $bar->bindParam("id",$id, PDO::PARAM_STR);
+        $bar->fetchAll(PDO::FETCH_ASSOC);
+        $bar->execute();
+        while ($reed = $bar->fetch()) {
+          if ($reed['passwords'] != $pass) {
+               $pass = Usuario::encriptarDato($pass);
+          } 
+        }
+          $data = dbcx::cx(1)->prepare('UPDATE  usuarios  SET email=:email,passwords=:passwords,rol=:rol,username=:username where id=:id');
           $data->bindParam("email", $email, PDO::PARAM_STR);
           $data->bindParam("passwords", $pass, PDO::PARAM_STR);
           $data->bindParam("rol", $rol, PDO::PARAM_STR);
           $data->bindParam("username", $username, PDO::PARAM_STR);
           $data->bindParam("id",$id, PDO::PARAM_STR);
           $data->execute();
-          $user=$data->fetch();
+          $verif=$data->RowCount();
           dbcx::cx(0);
-          return $user ;
+          return $verif ;
         
       } catch (PDOException $c) {
   
           return $c->getMessage();
       }
     }
+
+
+
+     // POST DELETE  MODELS ******USUARIOS*******
+
+     public static function deleteUser($id)
+     {
+       try {
+           $data = dbcx::cx(1)->prepare('DELETE FROM  usuarios  WHERE id=:id');
+           $data->bindParam("id",$id, PDO::PARAM_STR);
+           $data->execute();
+           $user=$data->fetch();
+           dbcx::cx(0);
+          
+
+
+           return $verif ;
+         
+       } catch (PDOException $c) {
+   
+           return $c->getMessage();
+       }
+     }
+
+      // POST DELETE  MODELS ******USUARIOS*******
+
+      public static function login($email,$pass)
+      {
+        try {
+          $pass=Usuario::encriptarDato($pass);
+            $data = dbcx::cx(1)->prepare('SELECT *FROM usuarios WHERE  email=:email and  passwords=:passwords ');
+            $data->bindParam("email",$email, PDO::PARAM_STR);
+            $data->bindParam("passwords",$pass, PDO::PARAM_STR);
+            $data->execute();
+            $users = $data->fetchAll(PDO::FETCH_ASSOC);
+            dbcx::cx(0);
+            return   $users;
+        
+        } catch (PDOException $c) {
+    
+            return $c->getMessage();
+        }
+      }
+
 }
 ?>

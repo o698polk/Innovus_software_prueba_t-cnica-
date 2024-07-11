@@ -10,7 +10,7 @@ class Product {
 
     try {
 
-        $pass = Usuario::encriptarDato($pass);
+        
         $data = dbcx::cx(1)->prepare('INSERT INTO productos(nombre,precio,stock,descripcion)values(:nombre,:precio,:stock,:descripcion)');
         $data->bindParam("nombre",$nombre, PDO::PARAM_STR);
         $data->bindParam("precio", $precio, PDO::PARAM_STR);

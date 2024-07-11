@@ -21,7 +21,7 @@
     </div>
     <div class="mb-3">
      
-     <input type="text" id="password_login" name="password_login" class="form-control" placeholder="Password">
+     <input type="password" id="password_login" name="password_login" class="form-control" placeholder="Password">
    </div>
     
     <button type="submit" class="btn btn-primary">Login</button>

@@ -13,19 +13,28 @@
     <body>
     <div class="container">
     <div class="container">
-    <form id="login_form_user">
+    <button type="buttom" id="login_remove" class="btn btn-danger">SALIR</button>
+    <form id="product_form">
        
     <legend>Crear Producto</legend>
     <div class="mb-3">
      
-      <input type="text" id="username_login" name="username_login"class="form-control" placeholder="Email">
+      <input type="text" id="nombre" name="nombre_product"class="form-control" placeholder="Nombre producto">
     </div>
     <div class="mb-3">
      
-     <input type="text" id="password_login" name="password_login" class="form-control" placeholder="Password">
+     <input type="text" id="precio" name="precio" class="form-control" placeholder="Precio producto">
+   </div>
+   <div class="mb-3">
+     
+     <input type="text" id="descripcion" name="descripcion" class="form-control" placeholder="Decripcion producto">
+   </div>
+   <div class="mb-3">
+     
+     <input type="text" id="stock" name="stock" class="form-control" placeholder="Stock Porductos">
    </div>
     
-    <button type="submit" class="btn btn-primary">Crear</button> <button type="buttom" onclick="romoveSesion();" class="btn btn-primary">SALIR</button>
+    <button type="submit" class="btn btn-primary">Crear</button>
   </fieldset>
 </form>
 </div>

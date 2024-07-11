@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', function () {
   EditProduct();
   DeleteProduct();
   showProduct();
+  romoveSesion();
   verify();
      /****************************************************************************************** */
 
@@ -41,11 +42,13 @@ document.addEventListener('DOMContentLoaded', function () {
      
   }
   function romoveSesion() {
-    $(document).on('submit', "#login_remove", function (e) {
+    $(document).on('click', "#login_remove", function (e) {
       e.preventDefault();
+      if (confirm('Eliminar')) {
       localStorage.removeItem('email');
       localStorage.removeItem('authToken');
       window.location.href = "login"; 
+      }
     
 });
 }
@@ -83,11 +86,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
   function CreateProduct() {
-    $(document).on('submit', "#form_public_tv", function (e) {
+    $(document).on('submit', "#product_form", function (e) {
       e.preventDefault();
       // let id_user=$("#descript_nw").attr('id_user');
 
-      var formData = new FormData(document.getElementById("form_public_tv"));
+      var formData = new FormData(document.getElementById("product_form"));
       // formData.append('id_user_nt',id_user);
       if (confirm('Crear Canal')) {
         $.ajax({
@@ -99,7 +102,6 @@ document.addEventListener('DOMContentLoaded', function () {
           contentType: false,
           processData: false,
           beforeSend: function (response) {
-            $('#load_canal').html('<p style="font-size:20px; color:blue; ">Cargando...</p>');
 
           }
         })
@@ -107,7 +109,7 @@ document.addEventListener('DOMContentLoaded', function () {
           .done(function (r) {
             console.log(r);
             if (r == 1) {
-            location.reload();
+           // location.reload();
             
             } else {
               alert("Error");

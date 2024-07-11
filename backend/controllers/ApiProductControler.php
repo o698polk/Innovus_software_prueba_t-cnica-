@@ -27,15 +27,15 @@ class ApiProductControler {
  public static function createProductApi($nombre,$precio,$stock,$descripcion,$token)
  {
    try {
-    ApiUserControler::Validation($token);
+    ApiProductControler::Validation($token);
     $respose=array("msg"=>"Error al crear","status"=>"","data"=>"");
 
         if(!empty($nombre) && !empty($precio)&&!empty($stock)&&!empty($descripcion)){
             
-            $nombre=ApiUserControler::limpiarDatos($nombre);
-            $precio=ApiUserControler::limpiarDatos($precio);
-            $stock=ApiUserControler::limpiarDatos($stock);
-            $descripcion=ApiUserControler::limpiarDatos($descripcion);
+            $nombre=ApiProductControler::limpiarDatos($nombre);
+            $precio=ApiProductControler::limpiarDatos($precio);
+            $stock=ApiProductControler::limpiarDatos($stock);
+            $descripcion=ApiProductControler::limpiarDatos($descripcion);
           
             $resul=Product::createProduct($nombre,$precio,$stock,$descripcion);
 
@@ -68,7 +68,7 @@ class ApiProductControler {
  public static function getAllProductApi($token)
  {
    try {
-    ApiUserControler::Validation($token);
+    ApiProductControler::Validation($token);
     $respose=array("msg"=>"Error al crear","status"=>"","data"=>"");
    
             $resul=Product::getProductAll();
@@ -94,7 +94,7 @@ class ApiProductControler {
  public static function getProductApi($id,$token)
  {
    try {
-    ApiUserControler::Validation($token);
+    ApiProductControler::Validation($token);
     $respose=array("msg"=>"Error al crear","status"=>"","data"=>"");
             $resul=Product::getProduct($id);
             if( !empty($resul)){
@@ -118,12 +118,12 @@ class ApiProductControler {
  public static function updateProductApi($nombre,$precio,$stock,$descripcion,$token)
  {
    try {
-    ApiUserControler::Validation($token);
+    ApiProductControler::Validation($token);
     $respose=array("msg"=>"Error al crear","status"=>"","data"=>"");  
-        $nombre=ApiUserControler::limpiarDatos($nombre);
-        $precio=ApiUserControler::limpiarDatos($precio);
-        $stock=ApiUserControler::limpiarDatos($stock);
-        $descripcion=ApiUserControler::limpiarDatos($descripcion);
+        $nombre=ApiProductControler::limpiarDatos($nombre);
+        $precio=ApiProductControler::limpiarDatos($precio);
+        $stock=ApiProductControler::limpiarDatos($stock);
+        $descripcion=ApiProductControler::limpiarDatos($descripcion);
       
         $resul=Product::createProduct($nombre,$precio,$stock,$descripcion);
 
@@ -148,7 +148,7 @@ class ApiProductControler {
  public static function deleteProductApi($id,$token)
  {
    try {
-    ApiUserControler::Validation($token);
+    ApiProductControler::Validation($token);
     $respose=array("msg"=>"Error al crear","status"=>"","data"=>"");
    
             $resul=Product::deleteProduct($id);

@@ -33,11 +33,12 @@ function login() {
               // Asignar valores a las variables desde el token decodificado
               var email = response.email;
               var token = response.token;
-
               localStorage.setItem('email', email);
               localStorage.setItem('authToken', token);
               // Redirigir al dashboard
-            window.location.href = "dashboard";
+               window.location.href = "dashboard";
+               console.log(data);
+               console.log(localStorage.getItem('authToken', token));
           } else {
               alert("Error: Credenciales incorrectas");
           }
